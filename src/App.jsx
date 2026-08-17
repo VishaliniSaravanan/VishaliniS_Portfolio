@@ -253,7 +253,7 @@ function App() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          style={{ width: '88%', maxWidth: '1100px', marginTop: '110px', position: 'relative', zIndex: 2 }}
+          className="section-content-wrapper"
         >
           <AccordionGallery
             items={PROJECTS_DATA}
@@ -300,7 +300,7 @@ function App() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ width: '100%', position: 'relative', zIndex: 10, marginTop: '80px' }}
+          className="section-content-wrapper"
         >
           <SkillsSection />
         </motion.div>
@@ -323,7 +323,7 @@ function App() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ width: '88%', maxWidth: '1100px', marginTop: '110px', position: 'relative', zIndex: 5 }}
+          className="section-content-wrapper"
         >
           <ModalCards />
         </motion.div>

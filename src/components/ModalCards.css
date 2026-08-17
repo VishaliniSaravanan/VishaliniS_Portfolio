@@ -189,3 +189,47 @@
   background: #a04000;
   color: #ffffff;
 }
+
+/* Mobile Responsiveness for Medium Link Preview Cards */
+@media (max-width: 640px) {
+  .modal-cards-container {
+    width: 100%;
+    padding: 0 4px;
+  }
+
+  .medium-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .medium-preview-card {
+    border-radius: 16px;
+  }
+
+  .medium-card-image-box {
+    height: 190px;
+  }
+
+  .medium-card-content {
+    padding: 16px;
+  }
+
+  .medium-card-title {
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+
+  .medium-card-subtitle {
+    font-size: 0.84rem;
+    margin-bottom: 14px;
+  }
+
+  .medium-card-footer {
+    padding-top: 12px;
+  }
+
+  .medium-open-btn {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+}
