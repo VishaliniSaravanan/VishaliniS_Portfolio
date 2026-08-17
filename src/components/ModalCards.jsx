@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, BookOpen, Clock, Calendar, Bookmark } from 'lucide-react';
+import walkAnywayImg from '../assets/walk_anyway.png';
 import './ModalCards.css';
 
 const DEFAULT_BLOGS = [
@@ -29,6 +30,19 @@ const DEFAULT_BLOGS = [
     image: 'https://miro.medium.com/v2/resize:fit:612/1*SdjZ6B1VlqY9Z-dv-pE4wQ.jpeg',
     summary: 'What separates a lived life from a dreamed one is the willingness to step into the motion. Featured in Heartline Publications on Medium.',
     link: 'https://medium.com/heartline-publications/thinker-in-motion-b1d305d17534?sharedUserId=vishalinisaravanan'
+  },
+  {
+    id: 3,
+    title: 'Walk Anyway',
+    subtitle: 'For you who are so certain you can make a way where there is none…',
+    tag: 'Free Verse',
+    author: 'Vishalini Saravanan',
+    publisher: 'No Time',
+    date: 'Aug 17, 2026',
+    readTime: '2 min read',
+    image: walkAnywayImg,
+    summary: 'For you who are so certain you can make a way where there is none… Featured in No Time on Medium.',
+    link: 'https://medium.com/no-time/walk-anyway-fae4a37114d5?sharedUserId=vishalinisaravanan'
   }
 ];
 
