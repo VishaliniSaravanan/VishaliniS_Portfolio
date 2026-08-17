@@ -1002,7 +1002,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   color: #ffffff;
 }
 
-/* Hero Section Mobile Responsiveness */
+/* Mobile Responsiveness & Layout Refinements */
 @media (max-width: 968px) {
   #home {
     flex-direction: column;
@@ -1021,5 +1021,38 @@ input[type="range"]::-webkit-slider-runnable-track {
   .hero-blob-outer {
     width: clamp(260px, 60vw, 360px);
     height: clamp(340px, 75vw, 460px);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    top: 24px;
+    left: 20px;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+  }
+
+  .top-nav-row {
+    top: 12px;
+    max-width: 96vw;
+    gap: 6px;
+  }
+
+  .pill-nav-container {
+    max-width: 76vw;
+    padding: 4px;
+  }
+
+  .pill-nav-item {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .hello-btn {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+
+  .hero-profile-card {
+    margin-top: 40px;
   }
 }

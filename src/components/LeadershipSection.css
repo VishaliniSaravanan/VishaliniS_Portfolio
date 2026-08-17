@@ -73,7 +73,7 @@
    ══════════════════════════════════════════════════════════════ */
 .ls-split-stage {
   position: relative;
-  height: 220px;
+  height: 240px;
   overflow: hidden;
   display: flex;
   border-bottom: 1px solid rgba(211, 84, 0, 0.14);
@@ -99,8 +99,18 @@
   transition: transform 0.5s ease;
 }
 
-.ls-split-left:hover  .ls-split-img,
-.ls-split-right:hover .ls-split-img { transform: scale(1.06); }
+.ls-split-img--session1 {
+  object-position: 33% 40%;
+  transform: scale(1.22);
+}
+
+.ls-split-img--session2 {
+  object-position: 33% 45%;
+  transform: scale(1.22);
+}
+
+.ls-split-left:hover  .ls-split-img--session1,
+.ls-split-right:hover .ls-split-img--session2 { transform: scale(1.32); }
 
 .ls-split-scrim {
   position: absolute;
@@ -320,8 +330,28 @@
 .ls-card:hover .ls-img-zoom-hint { color: #fff; transform: scale(1.15); }
 
 /* ══════════════════════════════════════════════════════════════
-   ④ CLASS REP — filmstrip two images
+   ④ CLASS REP / DEPT SEMINARS
    ══════════════════════════════════════════════════════════════ */
+.ls-seminar-img-box {
+  position: relative;
+  height: 165px;
+  overflow: hidden;
+  cursor: zoom-in;
+  border-bottom: 1px solid rgba(211, 84, 0, 0.12);
+  background: #1a0f0a;
+}
+
+.ls-seminar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.ls-seminar-img-box:hover .ls-seminar-img { transform: scale(1.06); }
+
 .ls-filmstrip {
   display: grid;
   grid-template-columns: 1fr 1fr;

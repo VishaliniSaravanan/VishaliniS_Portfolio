@@ -8,7 +8,6 @@ import training2  from '../assets/Training2.jpeg';
 import mocImg     from '../assets/MOC.png';
 import ecoImg     from '../assets/Club.png';
 import seminarsImg from '../assets/seminars.jpeg';
-import ipImg      from '../assets/Image processing Workshop.png';
 
 /* ── Lightbox ────────────────────────────────────────────────── */
 function Lightbox({ images, startIdx, onClose }) {
@@ -50,47 +49,47 @@ export default function LeadershipSection() {
       <div className="ls-wrapper">
         <div className="ls-bento-grid">
 
-          {/* ① PLACEMENT — hero wide card, diagonal split images */}
+          {/* ① PLACEMENT BATCH HEAD */}
           <motion.div className="ls-card ls-card--placement"
             initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.55 }}>
 
-            {/* Diagonal image split */}
             <div className="ls-split-stage">
               <div className="ls-split-left" onClick={() => open([training1, training2], 0)}>
-                <img src={training1} alt="Placement Training 1" className="ls-split-img" />
+                <img src={training1} alt="Placement Training Session 1" className="ls-split-img ls-split-img--session1" />
                 <div className="ls-split-scrim" />
                 <span className="ls-split-caption">Session I</span>
               </div>
               <div className="ls-split-right" onClick={() => open([training1, training2], 1)}>
-                <img src={training2} alt="Placement Training 2" className="ls-split-img" />
+                <img src={training2} alt="Placement Training Session 2" className="ls-split-img ls-split-img--session2" />
                 <div className="ls-split-scrim" />
                 <span className="ls-split-caption">Session II</span>
               </div>
-              {/* diagonal divider */}
               <div className="ls-split-divider" />
-              {/* badge over the divider */}
-              <span className="ls-split-badge">🎯 Placement Batch Head</span>
+              <span className="ls-split-badge">Placement Batch Head</span>
             </div>
 
             <div className="ls-card-body">
               <div className="ls-card-top-row">
-                <span className="ls-tag"><Users size={10} style={{marginRight:4}}/>Student Leader</span>
+                <span className="ls-tag"><Users size={10} style={{marginRight:4}}/>Placement Batch Head</span>
                 <span className="ls-period">2023 – Present</span>
               </div>
               <p className="ls-org">Velammal College of Engg. &amp; Tech.</p>
               <p className="ls-summary">
-                Spearheaded campus recruitment for 60+ students — coordinated 8+ drives with top-tier companies, ran intensive aptitude boot-camps, and mentored peers on résumé building and interview readiness.
+                Spearheaded campus recruitment drives and conducted soft skills training programs to prepare peers for industry placement.
               </p>
               <ul className="ls-bullets">
-                {['8+ campus drives with Fortune 500 recruiters','Mock interviews & aptitude training sessions','Resume workshops & soft-skills mentoring'].map((b,i) => (
+                {[
+                  'Spearheaded campus recruitment for 60+ students',
+                  'Trained 60+ students along with other batch heads on soft skills training'
+                ].map((b,i) => (
                   <li key={i}><span className="ls-dot" />{b}</li>
                 ))}
               </ul>
             </div>
           </motion.div>
 
-          {/* ② MOC — tall magazine-cover portrait card */}
+          {/* ② MASTER OF CEREMONIES */}
           <motion.div className="ls-card ls-card--moc"
             initial={{ opacity: 0, x: 28 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.08 }}>
@@ -99,12 +98,10 @@ export default function LeadershipSection() {
               <img src={mocImg} alt="Master of Ceremonies" className="ls-poster-img" />
               <div className="ls-poster-gradient" />
 
-              {/* floating mic badge */}
               <div className="ls-poster-mic">
                 <Mic size={16} />
               </div>
 
-              {/* text overlaid at bottom */}
               <div className="ls-poster-text">
                 <span className="ls-poster-tag">Stage & Media</span>
                 <h3 className="ls-poster-role">Master of Ceremonies</h3>
@@ -113,17 +110,20 @@ export default function LeadershipSection() {
               </div>
             </div>
 
-            {/* bullets below image */}
             <div className="ls-moc-body">
               <ul className="ls-bullets">
-                {['Anchored National Symposium "Innovision 2024"','Hosted Annual Day & farewell ceremonies','Bilingual (Tamil / English) stage anchoring'].map((b,i) => (
+                {[
+                  "Anchored in Fresher's Day 2025 & Graduation Day 2025",
+                  'Master of Ceremonies for National Science Day',
+                  'Anchored KNIME Workshop session'
+                ].map((b,i) => (
                   <li key={i}><span className="ls-dot" />{b}</li>
                 ))}
               </ul>
             </div>
           </motion.div>
 
-          {/* ③ ECO CLUB — accent-tinted image + nature feel */}
+          {/* ③ ECO CLUB */}
           <motion.div className="ls-card ls-card--eco"
             initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.14 }}>
@@ -131,7 +131,7 @@ export default function LeadershipSection() {
             <div className="ls-eco-img-box" onClick={() => open([ecoImg], 0)}>
               <img src={ecoImg} alt="ECO Club" className="ls-eco-img" />
               <div className="ls-eco-overlay" />
-              <span className="ls-eco-badge"><TreePine size={11} style={{marginRight:4}}/>ECO Club</span>
+              <span className="ls-eco-badge"><TreePine size={11} style={{marginRight:4}}/>ECO Club Member</span>
               <span className="ls-img-zoom-hint">⤢</span>
             </div>
 
@@ -141,42 +141,46 @@ export default function LeadershipSection() {
                 <span className="ls-period">2024 – 2025</span>
               </div>
               <p className="ls-org">Velammal College of Engg. &amp; Tech.</p>
-              <p className="ls-summary">Championed green campus initiatives — tree-planting drives, zero-waste workshops, and awareness campaigns for 500+ students.</p>
+              <p className="ls-summary">
+                Active member of the ECO Club, participating in environmental awareness workshops and campus green initiatives.
+              </p>
               <ul className="ls-bullets">
-                {['200+ saplings planted on World Environment Day','"Go Green" awareness rally','E-waste collection drives on campus'].map((b,i) => (
+                {[
+                  'ECO Club Member',
+                  'Participated in workshops regarding environmental awareness of ECO Club'
+                ].map((b,i) => (
                   <li key={i}><span className="ls-dot ls-dot--green" />{b}</li>
                 ))}
               </ul>
             </div>
           </motion.div>
 
-          {/* ④ CLASS REP — two-image filmstrip */}
+          {/* ④ DEPARTMENT SEMINARS */}
           <motion.div className="ls-card ls-card--cr"
             initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.2 }}>
 
-            <div className="ls-filmstrip">
-              <div className="ls-film-frame" onClick={() => open([seminarsImg, ipImg], 0)}>
-                <img src={seminarsImg} alt="Department Seminar" className="ls-film-img" />
-                <div className="ls-film-scrim" />
-                <span className="ls-film-label">Dept. Seminar</span>
-              </div>
-              <div className="ls-film-frame" onClick={() => open([seminarsImg, ipImg], 1)}>
-                <img src={ipImg} alt="IP Workshop" className="ls-film-img" />
-                <div className="ls-film-scrim" />
-                <span className="ls-film-label">IP Workshop</span>
-              </div>
+            <div className="ls-seminar-img-box" onClick={() => open([seminarsImg], 0)}>
+              <img src={seminarsImg} alt="Department Seminars" className="ls-seminar-img" />
+              <div className="ls-film-scrim" />
+              <span className="ls-film-label">Dept. Seminars</span>
             </div>
 
             <div className="ls-card-body">
               <div className="ls-card-top-row">
-                <span className="ls-tag"><Award size={10} style={{marginRight:4}}/>Academic</span>
+                <span className="ls-tag"><Award size={10} style={{marginRight:4}}/>Department Seminars</span>
                 <span className="ls-period">2023 – Present</span>
               </div>
               <p className="ls-org">Velammal College of Engg. &amp; Tech.</p>
-              <p className="ls-summary">Primary liaison between faculty and 60-student cohort — coordinating schedules, resolving grievances, and organising 12+ department events.</p>
+              <p className="ls-summary">
+                Delivered technical seminars across multiple coursework modules in the department.
+              </p>
               <ul className="ls-bullets">
-                {['12+ department-level academic events','Student grievances resolved (95% rate)','Maintained attendance & academic records'].map((b,i) => (
+                {[
+                  'AIM: Seminar on Ensemble Learning concepts',
+                  'Object Oriented Software Engineering: Seminar on Project Scheduling & Project Management',
+                  'Computer Networks: Seminar on MAC sublayer of Data Link Layer, etc.'
+                ].map((b,i) => (
                   <li key={i}><span className="ls-dot" />{b}</li>
                 ))}
               </ul>
