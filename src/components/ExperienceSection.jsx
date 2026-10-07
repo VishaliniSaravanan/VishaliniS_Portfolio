@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-import { Briefcase, Code, Database } from 'lucide-react';
 import './ExperienceSection.css';
 
 const INTERNSHIPS = [
@@ -9,10 +7,9 @@ const INTERNSHIPS = [
     company: 'Vinsup Infotech (P) Limited',
     location: 'Madurai, India',
     period: 'Jun – Jul 2025',
-    icon: <Database className="w-5 h-5 text-pink-700" />,
     bullets: [
-      'Built and deployed Netcurea, a full-stack Hospital Management System with an ML-based diabetes prediction module for patient risk analysis.',
-      'Developed real-time clinical dashboards using Power BI and Streamlit for healthcare data visualization.'
+      'Built Netcurea, a hospital management system with an ML diabetes-risk module.',
+      'Designed clinical dashboards in Power BI and Streamlit.'
     ]
   },
   {
@@ -21,9 +18,8 @@ const INTERNSHIPS = [
     company: 'Kevell Corp',
     location: 'Madurai, India',
     period: 'Dec 2024',
-    icon: <Code className="w-5 h-5 text-pink-700" />,
     bullets: [
-      'Designed and developed an e-commerce floral shop application, focusing on intuitive UI/UX to drive a seamless user journey and boost conversions.'
+      'Designed and developed an e-commerce floral shop with a clear product-to-checkout flow.'
     ]
   }
 ];
@@ -31,39 +27,22 @@ const INTERNSHIPS = [
 const ExperienceSection = () => {
   return (
     <div className="exp-container">
-
-      <div className="exp-sub-title">
-        <Briefcase className="w-5 h-5 text-pink-800 mr-2 inline" /> Professional &amp; Research Internships
-      </div>
-
       <div className="exp-grid">
-        {INTERNSHIPS.map((exp, idx) => (
-          <motion.div
-            key={exp.id}
-            className="exp-card intern-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: idx * 0.15 }}
-          >
-            <div className="exp-card-header">
-              <div className="exp-icon-box">{exp.icon}</div>
-              <div>
-                <span className="exp-period">{exp.period}</span>
-                <h3 className="exp-role">{exp.role}</h3>
-                <h4 className="exp-company">{exp.company} &bull; <span className="exp-loc">{exp.location}</span></h4>
-              </div>
-            </div>
-
+        {INTERNSHIPS.map((exp) => (
+          <article key={exp.id} className="exp-card">
+            <p className="exp-period">{exp.period}</p>
+            <h3 className="exp-role">{exp.role}</h3>
+            <p className="exp-company">
+              {exp.company} · {exp.location}
+            </p>
             <ul className="exp-bullets">
-              {exp.bullets.map((b, i) => (
-                <li key={i}>{b}</li>
+              {exp.bullets.map((b) => (
+                <li key={b}>{b}</li>
               ))}
             </ul>
-          </motion.div>
+          </article>
         ))}
       </div>
-
     </div>
   );
 };

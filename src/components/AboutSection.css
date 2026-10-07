@@ -1,131 +1,95 @@
 .about-container {
-  width: 94%;
-  max-width: 1320px;
-  margin: 60px auto 40px auto;
+  width: 100%;
   position: relative;
   z-index: 5;
 }
 
 .about-equal-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 42px;
-  align-items: stretch;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(28px, 5vw, 56px);
+  align-items: start;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 860px) {
   .about-equal-split {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 }
 
-/* LEFT COLUMN: Expansive Bio + Languages + Passions */
 .about-left-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 18px;
 }
 
-.bio-tag-compact {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #a04000;
-  background: rgba(160, 64, 0, 0.08);
-  padding: 4px 12px;
-  border-radius: 14px;
-  align-self: flex-start;
-}
-
 .about-heading-statement {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #78281f;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  margin-top: 4px;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  max-width: 36ch;
 }
 
 .about-para-lead {
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   color: #4a2810;
-}
-
-.about-para-lead strong {
-  color: #a04000;
-  font-weight: 700;
+  max-width: 52ch;
 }
 
 .about-left-sub {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding-top: 8px;
 }
 
-.left-sub-title {
-  font-size: 0.86rem;
-  font-weight: 800;
+.left-sub-title,
+.card-kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #78281f;
-  display: flex;
-  align-items: center;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 8px;
 }
 
-.lang-inline-list {
+.about-plain-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 14px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
-}
-
-.lang-pill {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: #4a2810;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(160, 64, 0, 0.2);
-  padding: 5px 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(160, 64, 0, 0.03);
+  background: rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(135, 54, 0, 0.08);
+  border-radius: 16px;
 }
 
-.lang-pill small {
-  color: #935147;
-  font-weight: 600;
+.about-plain-list li {
+  position: relative;
+  padding-left: 14px;
 }
 
-.passions-inline-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.about-plain-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
 }
 
-.passion-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 600;
+.about-hobbies-line {
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: #4a2810;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(160, 64, 0, 0.2);
-  padding: 6px 14px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(160, 64, 0, 0.03);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  margin: 0;
 }
 
-.passion-item:hover {
-  transform: translateY(-2px);
-  border-color: #a04000;
-}
-
-/* RIGHT COLUMN: Education & Areas of Interest Boxes */
 .about-right-col {
   display: flex;
   flex-direction: column;
@@ -133,98 +97,75 @@
 }
 
 .about-box-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(160, 64, 0, 0.2);
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 8px 24px rgba(160, 64, 0, 0.05);
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(135, 54, 0, 0.12);
+  border-radius: 22px;
+  padding: 22px 24px;
+  box-shadow: 0 8px 24px rgba(17, 58, 99, 0.04);
 }
 
-.about-box-card:hover {
-  border-color: rgba(160, 64, 0, 0.45);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(160, 64, 0, 0.1);
-}
-
-.card-header-compact {
-  display: flex;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.card-header-compact h3 {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #78281f;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-/* Education Stream */
-.edu-stream {
+.edu-stream-item {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+}
+
+.edu-stream-item--next {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(135, 54, 0, 0.1);
 }
 
 .edu-top-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .edu-title-sm {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 600;
   color: #2c1a0e;
 }
 
-.edu-badge-sm {
-  font-size: 10px;
-  font-weight: 800;
-  color: #ffffff;
-  background: #a04000;
-  padding: 3px 9px;
-  border-radius: 10px;
-  white-space: nowrap;
+.edu-note-sm {
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
 .edu-inst-sm {
-  font-size: 0.82rem;
-  color: #78281f;
-  font-weight: 600;
-  margin-top: 2px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
 }
 
 .edu-span-sm {
-  font-size: 0.74rem;
-  color: #935147;
-  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
-/* Interests Cloud */
-.interests-pill-cloud {
+.about-focus-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
 }
 
-.interest-chip-sm {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #78281f;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(160, 64, 0, 0.22);
-  padding: 6px 14px;
-  border-radius: 14px;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+.about-focus-list li {
+  font-size: 0.9rem;
+  color: #4a2810;
+  padding-left: 14px;
+  border-left: 1px solid rgba(160, 64, 0, 0.28);
+  position: relative;
 }
 
-.interest-chip-sm:hover {
-  background: #a04000;
-  color: #ffffff;
-  transform: translateY(-1px);
+.about-focus-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-size: 0.85rem;
 }
