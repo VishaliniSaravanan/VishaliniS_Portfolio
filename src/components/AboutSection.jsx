@@ -18,7 +18,7 @@ const AboutSection = () => {
       <div className="about-equal-split">
         <div className="about-left-col">
           <h3 className="about-heading-statement">
-            I build practical systems designed for real-world use, not just polished demos.
+            I’m interested in building practical software that fits naturally into everyday life.
           </h3>
           <p className="about-para-lead">
             I enjoy turning ideas into structured, useful applications that solve everyday problems.
