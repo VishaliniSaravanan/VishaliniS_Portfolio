@@ -1149,14 +1149,16 @@ input[type="range"]::-webkit-slider-runnable-track {
     min-height: 0 !important;
   }
 
-  #home {
-    padding-top: 72px;
-    padding-bottom: 32px;
+  section#home {
+    min-height: auto !important;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 72px 5vw 16px !important;
   }
 
   .home-inner {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
   }
 
   .hero-name {
@@ -1164,13 +1166,17 @@ input[type="range"]::-webkit-slider-runnable-track {
     align-items: center;
     text-align: center;
     width: 100%;
-    top: -12px;
+    max-width: 100%;
+    min-width: 0;
+    flex: none;
+    padding: 0 8px;
+    top: 0;
     transform: none;
   }
 
   .hero-blob-outer {
-    width: clamp(210px, 42vw, 300px);
-    height: clamp(260px, 42vw, 340px);
+    width: clamp(250px, 72vw, 360px);
+    height: clamp(310px, 85vw, 420px);
   }
 
   .page-section .section-title {
@@ -1213,7 +1219,19 @@ input[type="range"]::-webkit-slider-runnable-track {
   .hero-card-with-arc {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
+  }
+
+  .name-text-filled,
+  .name-text-outlined {
+    font-size: clamp(2.2rem, 9.5vw, 3.2rem);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-role {
+    max-width: 100%;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
   }
 
   .hero-arc-zone {

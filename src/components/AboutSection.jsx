@@ -2,10 +2,8 @@ import './AboutSection.css';
 
 const INTERESTS = [
   'Applied Machine Learning',
-  'RAG & Vector Search',
-  'LLM Optimization',
-  'Computer Vision',
-  'Green AI'
+  'Structured Application Development',
+  'Building Intelligent Systems'
 ];
 
 const LANGUAGES = [
@@ -20,10 +18,10 @@ const AboutSection = () => {
       <div className="about-equal-split">
         <div className="about-left-col">
           <h3 className="about-heading-statement">
-            I build systems where machine learning meets real use — retrieval, vision, and practical product decisions that hold up in the field.
+            I build practical systems designed for real-world use, not just polished demos.
           </h3>
           <p className="about-para-lead">
-            I spend most of my time on projects, internships, and experiments that need to work outside a demo. I like practical work more than polished hype.
+            I enjoy turning ideas into structured, useful applications that solve everyday problems.
           </p>
 
           <div className="about-left-sub">

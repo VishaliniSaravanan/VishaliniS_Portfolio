@@ -234,11 +234,11 @@ function App() {
           >
             <h1 className="name-text-filled">VISHALINI</h1>
             <h1 className="name-text-outlined">SARAVANAN</h1>
-            <p className="hero-role">AI/ML Engineer · Developer</p>
+            <p className="hero-role">CSE Undergraduate · Developer</p>
 
             <a
-              href="/Vishalini_Saravanan_Resume.pdf"
-              download="Vishalini_Saravanan_Resume.pdf"
+              href="/VISHALINI.pdf"
+              download="VISHALINI.pdf"
               className="download-cv-btn"
             >
               <Download className="w-4 h-4" />
