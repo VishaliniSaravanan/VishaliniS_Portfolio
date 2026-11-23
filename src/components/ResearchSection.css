@@ -2,80 +2,163 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 18px;
   position: relative;
   z-index: 5;
+}
+
+.rs-card {
+  min-height: 280px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(17, 58, 99, 0.13);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.rs-card::after {
+  content: '';
+  position: absolute;
+  right: -44px;
+  bottom: -44px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(17, 58, 99, 0.08);
+  border-radius: 50%;
+  box-shadow: 0 0 0 18px rgba(17, 58, 99, 0.025);
+  pointer-events: none;
+}
+
+.rs-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(17, 58, 99, 0.28);
+  box-shadow: 0 16px 38px rgba(17, 58, 99, 0.08);
+}
+
+.rs-journal {
+  background: linear-gradient(135deg, rgba(17, 58, 99, 0.96), rgba(36, 96, 142, 0.9));
+  border-color: transparent;
+}
+
+.rs-journal .rs-kind,
+.rs-journal .rs-year,
+.rs-journal .rs-tag {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.rs-journal .rs-kind-dot {
+  background: #8cd5dc;
+  box-shadow: 0 0 0 4px rgba(140, 213, 220, 0.12);
+}
+
+.rs-journal .rs-status {
+  color: #9fe1e6;
+}
+
+.rs-journal .rs-title,
+.rs-journal .rs-link {
+  color: #fff;
+}
+
+.rs-journal .rs-detail {
+  color: rgba(255, 255, 255, 0.78);
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.rs-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.rs-kind {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rs-kind-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(17, 58, 99, 0.08);
+}
+
+.rs-year {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rs-publication {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.rs-status {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rs-tag {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.rs-link {
+  width: fit-content;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+  position: relative;
+  z-index: 2;
+}
+
+.rs-title {
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.42;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.rs-detail {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(17, 58, 99, 0.1);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #1a4d42;
 }
 
 @media (max-width: 800px) {
   .rs-outer {
     grid-template-columns: 1fr;
   }
-}
-
-.rs-card {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(14, 98, 81, 0.12);
-  padding: 22px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.rs-top {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.rs-tag {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
-.rs-link {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-.rs-title {
-  font-size: clamp(1rem, 1.6vw, 1.18rem);
-  font-weight: 600;
-  color: var(--text-dark);
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.rs-details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 4px 0 0;
-}
-
-.rs-detail {
-  margin: 0;
-  padding-top: 10px;
-  border-top: 1px solid rgba(14, 98, 81, 0.1);
-}
-
-.rs-detail dt {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.rs-detail dd {
-  font-size: 0.84rem;
-  line-height: 1.6;
-  color: #1a4d42;
-  margin: 0;
 }

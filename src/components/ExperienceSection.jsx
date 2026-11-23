@@ -8,8 +8,11 @@ const INTERNSHIPS = [
     location: 'Madurai, India',
     period: 'Jun – Jul 2025',
     bullets: [
-      'Built Netcurea, a hospital management system with an ML diabetes-risk module.',
-      'Designed clinical dashboards in Power BI and Streamlit.'
+      'Built Netcurea, an end-to-end hospital management system for organizing patient and clinical workflows.',
+      'Developed an ML-based diabetes-risk module to collect health inputs and present interpretable risk predictions.',
+      'Created interactive clinical dashboards in Power BI and Streamlit for exploring trends and monitoring key metrics.',
+      'Performed data cleaning and preparation, and translated analytical findings into clear, user-facing visualizations.',
+      'Worked across frontend, backend, machine-learning, and reporting components and handled testing for the integrated application.'
     ]
   },
   {
@@ -19,7 +22,10 @@ const INTERNSHIPS = [
     location: 'Madurai, India',
     period: 'Dec 2024',
     bullets: [
-      'Designed and developed an e-commerce floral shop with a clear product-to-checkout flow.'
+      'Designed and developed a responsive e-commerce floral shop with a polished, mobile-friendly product catalogue.',
+      'Built a clear product-to-checkout journey, including product discovery, selection, cart, and order-placement views.',
+      'Structured reusable web components and organized product content to keep the interface consistent and easy to maintain.',
+      'Tested layouts and interactions across screen sizes, refined the visual hierarchy, and improved overall usability.'
     ]
   }
 ];

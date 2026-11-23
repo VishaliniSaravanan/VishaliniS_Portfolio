@@ -7,6 +7,7 @@ import AccordionGallery from './components/AccordionGallery';
 import ModalCards from './components/ModalCards';
 import AboutSection from './components/AboutSection';
 import ExperienceSection from './components/ExperienceSection';
+import ResearchSection from './components/ResearchSection';
 import HonoursCertificationsSection from './components/HonoursCertificationsSection';
 import LeadershipSection from './components/LeadershipSection';
 import ContactSection from './components/ContactSection';
@@ -17,6 +18,7 @@ const SECTIONS = [
   { id: 'about', label: 'About', theme: 'theme-yellow' },
   { id: 'experience', label: 'Experience', theme: 'theme-pink' },
   { id: 'projects', label: 'Projects', theme: 'theme-purple' },
+  { id: 'research', label: 'Research', theme: 'theme-green' },
   { id: 'honours', label: 'Honours', theme: 'theme-orange' },
   { id: 'skills', label: 'Skills', theme: 'theme-cyan' },
   { id: 'blogs', label: 'Blog', theme: 'theme-pink' },
@@ -281,6 +283,16 @@ function App() {
             overlayColor="#1a0a2e"
             radius={8}
           />
+        </div>
+      </section>
+      )}
+
+      {revealedSections.includes('research') && (
+      <section id="research" className="theme-green page-section">
+        <div className="grid-overlay" />
+        <div className="page-inner">
+          <h2 className="section-title">Research</h2>
+          <ResearchSection />
         </div>
       </section>
       )}
