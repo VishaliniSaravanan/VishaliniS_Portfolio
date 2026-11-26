@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Download, Menu, X } from 'lucide-react';
 import profilePhoto from './assets/Vish.jpeg';
 import noteLoomsImg from './assets/notelooms.jpg';
@@ -62,6 +62,27 @@ function App() {
   const observer = useRef(null);
   const lastScrollY = useRef(0);
   const navListRef = useRef(null);
+  const arcTiltRaw = useMotionValue(0);
+  const arcXRaw = useMotionValue(0);
+  const arcYRaw = useMotionValue(0);
+  const arcRotate = useSpring(arcTiltRaw, { stiffness: 120, damping: 18 });
+  const arcX = useSpring(arcXRaw, { stiffness: 120, damping: 18 });
+  const arcY = useSpring(arcYRaw, { stiffness: 120, damping: 18 });
+
+  const handleHeroMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    arcXRaw.set(nx * 7);
+    arcYRaw.set(ny * 7);
+    arcTiltRaw.set(nx * 2.5 - ny * 2.2);
+  };
+
+  const handleHeroMouseLeave = () => {
+    arcXRaw.set(0);
+    arcYRaw.set(0);
+    arcTiltRaw.set(0);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -124,7 +145,8 @@ function App() {
   const currentThemeClass = SECTIONS.find(s => s.id === activeSection)?.theme || 'theme-blue';
 
   return (
-    <div className={`min-h-screen transition-colors duration-700 ${currentThemeClass}`}>
+    <div className={`min-h-screen relative transition-colors duration-700 ${currentThemeClass}`}>
+      <div className="grid-overlay" aria-hidden="true" />
 
       <div className={`top-nav-row${navVisible ? '' : ' nav-hidden'}`}>
         <nav className="pill-nav-container" ref={navListRef} aria-label="Primary">
@@ -185,9 +207,12 @@ function App() {
       )}
 
       {/* Section 1: Hero (Home) */}
-      <section id="home" className="theme-blue relative min-h-screen">
-        <div className="grid-overlay" />
-
+      <section
+        id="home"
+        className="theme-blue relative"
+        onMouseMove={handleHeroMouseMove}
+        onMouseLeave={handleHeroMouseLeave}
+      >
         <div className="home-inner">
           {/* LEFT — Blob + Arc icons */}
           <motion.div
@@ -198,26 +223,29 @@ function App() {
             transition={{ duration: 1.1, type: 'spring', stiffness: 80 }}
           >
             <div className="hero-card-with-arc">
-              <div className="hero-arc-zone">
+              <motion.div
+                className="hero-arc-zone"
+                style={{ x: arcX, y: arcY, rotate: arcRotate }}
+              >
                 <svg className="hero-arc-svg" viewBox="0 0 160 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 160 80 C 10 80 10 420 160 420" stroke="var(--accent-color)" strokeWidth="1.2" strokeDasharray="5 5" opacity="0.25"/>
+                  <path d="M 160 80 C 10 80 10 420 160 420" stroke="var(--accent-color)" strokeWidth="1.2" strokeDasharray="5 5" opacity="0.32"/>
                 </svg>
-                <a href="tel:+916383117617" className="hero-arc-icon" style={{top:'16%', left:'100%'}} data-label="Phone">
+                <a href="tel:+916383117617" className="hero-arc-icon" style={{top:'16%', left:'100%', '--float-delay':'0s'}} data-label="Phone">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                 </a>
-                <a href="mailto:vishalinisaravanan546@gmail.com" className="hero-arc-icon" style={{top:'27%', left:'47%'}} data-label="Email">
+                <a href="mailto:vishalinisaravanan546@gmail.com" className="hero-arc-icon" style={{top:'27%', left:'47%', '--float-delay':'0.8s'}} data-label="Email">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </a>
-                <a href="https://linkedin.com/in/s-vishalini" target="_blank" rel="noreferrer" className="hero-arc-icon" style={{top:'50%', left:'30%'}} data-label="LinkedIn">
+                <a href="https://linkedin.com/in/s-vishalini" target="_blank" rel="noreferrer" className="hero-arc-icon" style={{top:'50%', left:'30%', '--float-delay':'1.6s'}} data-label="LinkedIn">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
-                <a href="https://github.com/VishaliniSaravanan" target="_blank" rel="noreferrer" className="hero-arc-icon" style={{top:'73%', left:'47%'}} data-label="GitHub">
+                <a href="https://github.com/VishaliniSaravanan" target="_blank" rel="noreferrer" className="hero-arc-icon" style={{top:'73%', left:'47%', '--float-delay':'2.4s'}} data-label="GitHub">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 </a>
-                <a href="https://medium.com/@vishalinisaravanan" target="_blank" rel="noreferrer" className="hero-arc-icon" style={{top:'84%', left:'100%'}} data-label="Medium">
+                <a href="https://medium.com/@vishalinisaravanan" target="_blank" rel="noreferrer" className="hero-arc-icon" style={{top:'84%', left:'100%', '--float-delay':'3.2s'}} data-label="Medium">
                   <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403H7.26l5.378 11.795 4.728-11.795H24v.403l-1.917 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.87 1.837v.403h-9.41v-.403l1.937-1.882c.19-.19.19-.246.19-.537V8.608l-5.39 13.688h-.727L4.278 8.608v9.168c-.052.385.076.774.347 1.052l2.52 3.058v.402H0v-.402l2.52-3.058c.27-.279.39-.67.326-1.052V6.887z"/></svg>
                 </a>
-              </div>
+              </motion.div>
 
               <div className="hero-blob-outer">
                 <div className="hero-photo-blob">
@@ -251,7 +279,6 @@ function App() {
       </section>
 
       <section id="about" className="theme-yellow page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">About</h2>
           <AboutSection />
@@ -260,7 +287,6 @@ function App() {
 
       {revealedSections.includes('experience') && (
       <section id="experience" className="theme-pink page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Experience</h2>
           <ExperienceSection />
@@ -270,7 +296,6 @@ function App() {
 
       {revealedSections.includes('projects') && (
       <section id="projects" className="theme-purple page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Projects</h2>
           <AccordionGallery
@@ -280,7 +305,7 @@ function App() {
             trigger="hover"
             height={400}
             accentColor="var(--accent-color)"
-            overlayColor="#1a0a2e"
+            overlayColor="#0f2b5c"
             radius={8}
           />
         </div>
@@ -289,7 +314,6 @@ function App() {
 
       {revealedSections.includes('research') && (
       <section id="research" className="theme-green page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Research</h2>
           <ResearchSection />
@@ -299,7 +323,6 @@ function App() {
 
       {revealedSections.includes('honours') && (
       <section id="honours" className="theme-orange page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Honors</h2>
           <HonoursCertificationsSection />
@@ -309,7 +332,6 @@ function App() {
 
       {revealedSections.includes('skills') && (
       <section id="skills" className="theme-cyan page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Skills</h2>
           <SkillsSection />
@@ -319,7 +341,6 @@ function App() {
 
       {revealedSections.includes('blogs') && (
       <section id="blogs" className="theme-pink page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Blog</h2>
           <ModalCards />
@@ -329,7 +350,6 @@ function App() {
 
       {revealedSections.includes('leadership') && (
       <section id="leadership" className="theme-yellow page-section">
-        <div className="grid-overlay" />
         <div className="page-inner">
           <h2 className="section-title">Leadership</h2>
           <LeadershipSection />
@@ -351,4 +371,3 @@ function App() {
 }
 
 export default App;
-
