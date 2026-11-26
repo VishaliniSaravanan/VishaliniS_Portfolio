@@ -25,6 +25,14 @@ const DEFAULT_BLOGS = [
     date: 'Aug 17, 2026',
     image: walkAnywayImg,
     link: 'https://medium.com/no-time/walk-anyway-fae4a37114d5?sharedUserId=vishalinisaravanan'
+  },
+  {
+    id: 4,
+    title: 'Draw Your Map as You Walk',
+    subtitle: 'How my first international conference became a landmark on a map I was still drawing.',
+    date: 'Oct 1, 2026',
+    image: 'https://miro.medium.com/v2/resize:fit:591/1*CPkMHrjplkvzFGyQsZahXA.png',
+    link: 'https://medium.com/heartline-publications/draw-your-map-as-you-walk-05109bd00822?sharedUserId=vishalinisaravanan'
   }
 ];
 
