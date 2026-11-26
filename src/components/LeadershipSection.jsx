@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import './LeadershipSection.css';
 
-import training1 from '../assets/Training1 .jpeg';
-import training2 from '../assets/Training2.jpeg';
+import training1 from '../assets/Training1.png';
+import training2 from '../assets/Training2.png';
 import mocImg from '../assets/MOC.png';
 import ecoImg from '../assets/Club.png';
 import seminarsImg from '../assets/seminars.jpeg';
@@ -54,7 +54,7 @@ const ENTRIES = [
     summary: 'Coordinated campus recruitment and soft-skills training for peers heading into placements.',
     bullets: ['Outreach for 60+ students', 'Soft-skills sessions with other batch heads'],
     images: [
-      { src: training1, alt: 'Placement training session I', focus: 'focus-blue-chudi' },
+      { src: training1, alt: 'Placement training session with Vishalini in blue attire', focus: 'focus-blue-chudi' },
       { src: training2, alt: 'Placement training session II', focus: 'focus-blue-chudi' }
     ]
   },
